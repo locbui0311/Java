@@ -138,7 +138,7 @@ public class AccountProfile extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Update1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(31, 31, 31)
                         .addComponent(Exit))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
