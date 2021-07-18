@@ -5,6 +5,14 @@
  */
 package quanli_cafe;
 
+import com.sun.istack.internal.logging.Logger;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LocBui
@@ -14,8 +22,18 @@ public class Admin extends javax.swing.JFrame {
     /**
      * Creates new form Admin
      */
+    Vector vheader=new Vector();
+    Vector vdata=new Vector();
+    DAO_Employee dao=new DAO_Employee();
     public Admin() {
         initComponents();
+        
+        vheader.add("Username:");
+        vheader.add("DisplayName:");
+        vheader.add("Password:");
+        vheader.add("Type:");
+        dao.loadData(vdata);
+        DataGridView4.setModel(new DefaultTableModel(vdata,vheader));
     }
 
     /**
@@ -127,6 +145,11 @@ public class Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         DataGridView1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -745,9 +768,19 @@ public class Admin extends javax.swing.JFrame {
 
         jButton16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton16.setText("Thêm");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton17.setText("Xóa ");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton18.setText("Sửa");
@@ -807,6 +840,11 @@ public class Admin extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Đặt lại mật khẩu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -861,15 +899,16 @@ public class Admin extends javax.swing.JFrame {
 
         DataGridView4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Username", "DisplayName", "Password", "Type"
             }
         ));
+        DataGridView4.setToolTipText("");
         jScrollPane6.setViewportView(DataGridView4);
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
@@ -978,6 +1017,49 @@ public class Admin extends javax.swing.JFrame {
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
+
+//     private void showDuLieu() throws SQLException {
+//   try{
+//     DataGridView4.removeAll();
+//     String [] array ={"User name", " Display"," PassWord","Type"};
+//     DefaultTableModel model = new DefaultTableModel(array,0);
+//     String query ="SELECT* FROM dbo.[Account]";
+//     Connection connection= ConnectionSQL ();
+//         PreparedStatement ps= connection.prepareStatement(query);
+//         ResultSet rs=ps.executeQuery();
+//         while(rs.next()){
+//             Vector vector = new Vector();
+//             Vector.add();
+//         
+//   } 
+//        }
+//      catch (SQLException ex) 
+//      {
+//          Logger.getLogger(QuanLi_CaFe.class.getName()).log(level.SEVERE,null,ex);
+//      }
+//     }
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+//       Pojo_Employee x=new Pojo_Employee(jTextField10.getText(), jTextField11.getText());
+//        dao.addEmployee(x);
+//        dao.loadData(vdata);
+//        DataGridView4.updateUI();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+       Pojo_Employee x=new Pojo_Employee();
+        x.setUsername(jTextField10.getText());
+        dao.deleteEmployee(x);
+        dao.loadData(vdata);
+        DataGridView4.updateUI();
+    }//GEN-LAST:event_jButton17ActionPerformed
 
     /**
      * @param args the command line arguments
