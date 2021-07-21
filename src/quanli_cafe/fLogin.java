@@ -192,18 +192,28 @@ public class fLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_checkActionPerformed
 
     private void jbtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLoginActionPerformed
+        String Username=jTextUserName.getText();
+        String Password=new String(password.getPassword());
+        if(login(Username, Password)){
+            
        
-        
         TabLeManager f = new TabLeManager();
         f.setLocationRelativeTo(null); //đưa form ra giữa màn hình
         f.setVisible(true);
         f.show();
         this.hide();
         
-        
+        }
+        else {
+              JOptionPane.showConfirmDialog(this,"sai tên tài khoàn hoặc mật khẩu");
+        }
         
     }//GEN-LAST:event_jbtLoginActionPerformed
 
+   public boolean login(String Username,String Password)
+    {
+        return false;
+    }
     /**
      * @param args the command line arguments
      */
