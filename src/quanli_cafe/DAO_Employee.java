@@ -59,7 +59,7 @@ public class DAO_Employee {
             Logger.getLogger(DAO_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void addEmployee(Pojo_Employee x)
+    public void addEmployee(Pojo_Employee x) //Button Thêm
     {
         
         try {
@@ -76,7 +76,7 @@ public class DAO_Employee {
             Logger.getLogger(DAO_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void deleteEmployee(Pojo_Employee x)
+    public void deleteEmployee(Pojo_Employee x) //Button xóa
     {
         
         try {
@@ -90,7 +90,7 @@ public class DAO_Employee {
             Logger.getLogger(DAO_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void updateEmployee(Pojo_Employee x)
+    public void updateEmployee(Pojo_Employee x) //Button uppdate
     {
         
         try {
@@ -108,7 +108,7 @@ public class DAO_Employee {
             
         }
     }
-    public void searchEmployee(String eusername,Vector vdata)
+    public void searchEmployee(String eusername,Vector vdata) //Button search
     {
         try {
             vdata.removeAllElements();
