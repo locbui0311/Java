@@ -19,6 +19,7 @@ public class QuanLi_CaFe {
         fLogin frm= new fLogin(); 
         frm.setLocationRelativeTo(null); //đưa form ra giữa màn hình
         frm.setVisible(true);
+        */* sửa code */
     }
     
 }
